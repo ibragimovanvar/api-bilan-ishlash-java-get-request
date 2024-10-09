@@ -1,5 +1,6 @@
 package com.generation;
 
+import com.generation.service.DocumentService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -30,20 +31,8 @@ public class CommentsAPI {
             Gson gson = new Gson();
             List<Comment> comments = gson.fromJson(sb.toString(), new TypeToken<List<Comment>>(){});
 
-            int id = 501;
-            boolean topildi = false;
-            for(Comment c : comments){
-                if(c.getId() == id){
-                    topildi = true;
-                    System.out.println(c.getId());
-                    System.out.println(c.getName());
-                    System.out.println(c.getEmail());
-                }
-            }
-
-            if (!topildi){
-                System.out.println("Bu id bilan komment topilmadi.");
-            }
+            DocumentService documentService = new DocumentService();
+            documentService.createDocumentForComments(comments);
 
         } catch (IOException e) {
             System.err.println(e);
