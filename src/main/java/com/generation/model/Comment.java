@@ -1,4 +1,4 @@
-package com.generation;
+package com.generation.model;
 
 public class Comment {
     private int postId;
